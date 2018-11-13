@@ -34,49 +34,61 @@
                 <li id="dashboard">
                     <a href="./admin.php">
                         <i class="material-icons">dashboard</i>
-                        <p>Dashboard</p>
+                        <p>Página Inicial</p>
                     </a>
                 </li>
-                <li id="eventos">
-                    <a href="">
-                        <i class="material-icons">event</i>
-                        <p>Evento</p>
+                <li id="dados">
+                    <a href="cadastrar_dados.php">
+                        <i class="material-icons">
+                            perm_identity
+                        </i>
+                        <p>Dados</p>
                     </a>
                 </li>
                 <li id="edicao">
                     <a href="">
-                        <i class="material-icons">content_paste</i>
-                        <p>Edição</p>
+                        <i class="material-icons">
+                            local_hospital
+                        </i>
+                        <p>Consultas</p>
                     </a>
                 </li>
                 <li id="cidade">
                     <a href="">
-                        <i class="material-icons">location_city</i>
-                        <p>Cidade</p>
+                        <i class="material-icons">
+                            local_dining
+                        </i>
+                        <p>Alimentação</p>
                     </a>
                 </li>
                 <li id="local">
-                    <a href="">
-                        <i class="material-icons">location_on</i>
-                        <p>Local</p>
+                    <a href="cadastrar_fraldas.php">
+                        <i class="material-icons">
+                            child_care
+                        </i>
+                        <p>Fraldas</p>
                     </a>
                 </li>
                 <li id="espaco">
                     <a href="">
                         <i class="material-icons">store</i>
-                        <p>Espaços</p>
+                        <p>Banhos</p>
                     </a>
                 </li>
                 <li id="culinaria">
                     <a href="">
-                        <i class="material-icons">photo_library</i>
-                        <p>Culinária</p>
+                        <i class="material-icons">
+                            hotel
+                        </i>
+                        <p>Sono</p>
                     </a>
                 </li>
                 <li id="album">
                     <a href="">
-                        <i class="material-icons">photo_library</i>
-                        <p>Álbum de Fotos</p>
+                        <i class="material-icons">
+                            bar_chart
+                        </i>
+                        <p>Relatórios</p>
                     </a>
                 </li>
                 <li class="active-pro" style="padding-bottom: 50px;">
@@ -89,4 +101,4 @@
             </ul>
         </div>
     </div>
-</div>
+    <div class="main-panel">
