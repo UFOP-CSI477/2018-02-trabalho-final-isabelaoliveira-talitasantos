@@ -14,7 +14,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema db
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `db` DEFAULT CHARACTER SET utf8 ;
+CREATE DATABASE IF NOT EXISTS `db` DEFAULT CHARACTER SET utf8 ;
 USE `db` ;
 
 -- -----------------------------------------------------
@@ -39,7 +39,6 @@ CREATE TABLE IF NOT EXISTS `db`.`bebe` (
   `foto` VARCHAR(255) NULL,
   `usuarios_master_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_bebe_usuarios_master1_idx` (`usuarios_master_id` ASC) VISIBLE,
   CONSTRAINT `fk_bebe_usuarios_master1`
     FOREIGN KEY (`usuarios_master_id`)
     REFERENCES `db`.`usuarios_master` (`id`)
@@ -59,7 +58,6 @@ CREATE TABLE IF NOT EXISTS `db`.`consultas` (
   `observacao` TEXT NULL,
   `bebe_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_consultas_bebe1_idx` (`bebe_id` ASC) VISIBLE,
   CONSTRAINT `fk_consultas_bebe1`
     FOREIGN KEY (`bebe_id`)
     REFERENCES `db`.`bebe` (`id`)
@@ -77,7 +75,6 @@ CREATE TABLE IF NOT EXISTS `db`.`pesoAltura` (
   `altura` VARCHAR(7) NOT NULL,
   `bebe_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_pesoAltura_bebe1_idx` (`bebe_id` ASC) VISIBLE,
   CONSTRAINT `fk_pesoAltura_bebe1`
     FOREIGN KEY (`bebe_id`)
     REFERENCES `db`.`bebe` (`id`)
@@ -95,7 +92,6 @@ CREATE TABLE IF NOT EXISTS `db`.`banhos` (
   `horario` VARCHAR(45) NOT NULL,
   `bebe_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_banhos_bebe1_idx` (`bebe_id` ASC) VISIBLE,
   CONSTRAINT `fk_banhos_bebe1`
     FOREIGN KEY (`bebe_id`)
     REFERENCES `db`.`bebe` (`id`)
@@ -115,7 +111,6 @@ CREATE TABLE IF NOT EXISTS `db`.`alimentacoes` (
   `descricao` TEXT NULL,
   `bebe_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_alimentacoes_bebe1_idx` (`bebe_id` ASC) VISIBLE,
   CONSTRAINT `fk_alimentacoes_bebe1`
     FOREIGN KEY (`bebe_id`)
     REFERENCES `db`.`bebe` (`id`)
@@ -133,7 +128,6 @@ CREATE TABLE IF NOT EXISTS `db`.`fraldas` (
   `horario` VARCHAR(45) NOT NULL,
   `bebe_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_fraldas_bebe1_idx` (`bebe_id` ASC) VISIBLE,
   CONSTRAINT `fk_fraldas_bebe1`
     FOREIGN KEY (`bebe_id`)
     REFERENCES `db`.`bebe` (`id`)
@@ -153,7 +147,6 @@ CREATE TABLE IF NOT EXISTS `db`.`sonos` (
   `observacao` TEXT NULL,
   `bebe_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_sonos_bebe1_idx` (`bebe_id` ASC) VISIBLE,
   CONSTRAINT `fk_sonos_bebe1`
     FOREIGN KEY (`bebe_id`)
     REFERENCES `db`.`bebe` (`id`)
@@ -171,7 +164,6 @@ CREATE TABLE IF NOT EXISTS `db`.`usuarios_secundarios` (
   `senha` VARCHAR(45) NOT NULL,
   `usuarios_master_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_usuarios_secundarios_usuarios_master_idx` (`usuarios_master_id` ASC) VISIBLE,
   CONSTRAINT `fk_usuarios_secundarios_usuarios_master`
     FOREIGN KEY (`usuarios_master_id`)
     REFERENCES `db`.`usuarios_master` (`id`)
