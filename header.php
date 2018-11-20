@@ -45,23 +45,23 @@
                         <p>Dados</p>
                     </a>
                 </li>
-                <li id="edicao">
-                    <a href="">
+                <li id="alimentacao">
+                    <a href="cadastrar_consulta.php">
                         <i class="material-icons">
                             local_hospital
                         </i>
                         <p>Consultas</p>
                     </a>
                 </li>
-                <li id="cidade">
-                    <a href="">
+                <li id="alimentacao">
+                    <a href="cadastrar_alimentacao.php">
                         <i class="material-icons">
                             local_dining
                         </i>
                         <p>Alimentação</p>
                     </a>
                 </li>
-                <li id="local">
+                <li id="fraldas">
                     <a href="cadastrar_fraldas.php">
                         <i class="material-icons">
                             child_care
@@ -69,14 +69,14 @@
                         <p>Fraldas</p>
                     </a>
                 </li>
-                <li id="espaco">
-                    <a href="">
+                <li id="banho">
+                    <a href="cadastrar_banho.php">
                         <i class="material-icons">store</i>
                         <p>Banhos</p>
                     </a>
                 </li>
-                <li id="culinaria">
-                    <a href="">
+                <li id="sono">
+                    <a href="cadastrar_sono.php">
                         <i class="material-icons">
                             hotel
                         </i>
