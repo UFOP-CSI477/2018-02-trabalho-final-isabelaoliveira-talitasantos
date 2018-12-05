@@ -23,11 +23,8 @@ O objetivo deste trabalho é realizar um controle do pré-natal da gestante e co
 
 <!-- Apresentar restrições de funcionalidades e de escopo. -->
 ### 3. Restrições
-
-  Neste trabalho não serão considerados ...
-
-Pré-natal – não é tratado no sistema
-Controle até dois anos de idade
+	Pré-natal – não é tratado no sistema.
+	Controle até dois anos de idade
 ### 4. Protótipo
   
 
