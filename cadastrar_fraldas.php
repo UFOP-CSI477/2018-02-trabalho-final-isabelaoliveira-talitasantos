@@ -61,14 +61,14 @@ if(isset($_POST['insert'])){
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-5">
+                                <div class="col-md-4">
                                     <div class="form-group label-floating">
                                         <label class="control-label">Data</label>
                                         <input type="date" name="data" class="form-control" required>
                                     </div>
                                 </div>
 
-                                <div class="col-md-5">
+                                <div class="col-md-2">
                                     <div class="form-group label-floating">
                                         <label class="control-label">Horário</label>
                                         <input type="time" name="horario" class="form-control" required>

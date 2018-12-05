@@ -26,7 +26,8 @@ O objetivo deste trabalho é realizar um controle do pré-natal da gestante e co
 
   Neste trabalho não serão considerados ...
 
-<!-- Construir alguns protótipos para a aplicação, disponibilizá-los no Github e descrever o que foi considerado. //-->
+Pré-natal – não é tratado no sistema
+Controle até dois anos de idade
 ### 4. Protótipo
   
 

@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8"/>
     <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png"/>
-    <link rel="icon" type="image/png" href="assets/img/favicon.png"/>
+    <link rel="icon" type="image/jpg" href="assets/img/logo6.jpg"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>Outside Food</title>
+    <title>Baby Life</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
     <!-- Bootstrap core CSS     -->
@@ -26,7 +26,7 @@
     <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-1.jpg">
         <div class="logo">
             <a href="./admin.php" class="simple-text">
-                <img class="logo1" src="assets/img/oft1.png">
+                <img class="logo1" src="assets/img/logo5.jpg">
             </a>
         </div>
         <div class="sidebar-wrapper">
@@ -84,7 +84,7 @@
                     </a>
                 </li>
                 <li id="album">
-                    <a href="">
+                    <a href="relatórios.php">
                         <i class="material-icons">
                             bar_chart
                         </i>
