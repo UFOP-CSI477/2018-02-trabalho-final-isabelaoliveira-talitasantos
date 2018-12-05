@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png" />
-    <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/logo6.jpg" />
+    <link rel="icon" type="image/png" href="assets/img/logo6.jpg" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>Baby Life</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
@@ -21,12 +21,10 @@
 </head>
 
 
-<body style="height: 100%; background-repeat: no-repeat; background-image: linear-gradient(#F1C40F, #fcf3d1);padding-bottom:200px;position:relative; ">
+<body style="height: 100%; background-repeat: no-repeat; background-image: linear-gradient(#FA5858, #fcf3d1);padding-bottom:200px;position:relative; ">
   <div class="container" align="center">
     <div class="card card-container" id="login">
-      <img id="imagemlogin" class="imagemlogin" src="assets/img/icon3.png" style="    width: 60px;height: 60px;margin: 0 auto 10px;display: block;" />
-      <p id="imagemlogin" class="imagemlogin"></p>
-      <img style="width: 150px;height: 84px; margin-bottom: 10px; " src="assets/img/oft1.png" >
+      <img style="width: 150px;height: 84px; margin-bottom: 10px; " src="assets/img/logo5.jpg" >
 
 
       <form class="form-signin" action="assets/php/validaLogin.php" method="post">
