@@ -18,79 +18,88 @@
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet'
-          type='text/css'>
+    type='text/css'>
 </head>
 
 <body>
-<div class="wrapper">
-    <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-1.jpg">
-        <div class="logo">
-            <a href="./admin.php" class="simple-text">
-                <img class="logo1" src="assets/img/logo5.jpg">
-            </a>
-        </div>
-        <div class="sidebar-wrapper">
-            <ul class="nav">
-                <li id="dashboard">
-                    <a href="./admin.php">
-                        <i class="material-icons">dashboard</i>
-                        <p>Página Inicial</p>
-                    </a>
-                </li>
-                <li id="dados">
-                    <a href="cadastrar_dados.php">
-                        <i class="material-icons">
-                            perm_identity
-                        </i>
-                        <p>Dados</p>
-                    </a>
-                </li>
-                <li id="alimentacao">
-                    <a href="cadastrar_consulta.php">
-                        <i class="material-icons">
-                            local_hospital
-                        </i>
-                        <p>Consultas</p>
-                    </a>
-                </li>
-                <li id="alimentacao">
-                    <a href="cadastrar_alimentacao.php">
-                        <i class="material-icons">
-                            local_dining
-                        </i>
-                        <p>Alimentação</p>
-                    </a>
-                </li>
-                <li id="fraldas">
-                    <a href="cadastrar_fraldas.php">
-                        <i class="material-icons">
-                            child_care
-                        </i>
-                        <p>Fraldas</p>
-                    </a>
-                </li>
-                <li id="banho">
-                    <a href="cadastrar_banho.php">
-                        <i class="material-icons">store</i>
-                        <p>Banhos</p>
-                    </a>
-                </li>
-                <li id="sono">
-                    <a href="cadastrar_sono.php">
-                        <i class="material-icons">
-                            hotel
-                        </i>
-                        <p>Sono</p>
-                    </a>
-                </li>
-                <li id="album">
+    <div class="wrapper">
+        <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-1.jpg">
+            <div class="logo">
+                <a href="./admin.php" class="simple-text">
+                    <img class="logo1" src="assets/img/logo5.jpg">
+                </a>
+            </div>
+            <div class="sidebar-wrapper">
+                <ul class="nav">
+                    <li id="dashboard">
+                        <a href="./admin.php">
+                            <i class="material-icons">dashboard</i>
+                            <p>Página Inicial</p>
+                        </a>
+                    </li>
+                    <li id="dados">
+                        <a href="cadastrar_dados.php">
+                            <i class="material-icons">
+                                perm_identity
+                            </i>
+                            <p>Dados</p>
+                        </a>
+                    </li>
+                    <li id="alimentacao">
+                        <a href="cadastrar_consulta.php">
+                            <i class="material-icons">
+                                local_hospital
+                            </i>
+                            <p>Consultas</p>
+                        </a>
+                    </li>
+                    <li id="alimentacao">
+                        <a href="cadastrar_alimentacao.php">
+                            <i class="material-icons">
+                                local_dining
+                            </i>
+                            <p>Alimentação</p>
+                        </a>
+                    </li>
+                    <li id="fraldas">
+                        <a href="cadastrar_fraldas.php">
+                            <i class="material-icons">
+                                child_care
+                            </i>
+                            <p>Fraldas</p>
+                        </a>
+                    </li>
+                    <li id="banho">
+                        <a href="cadastrar_banho.php">
+                            <i class="material-icons">store</i>
+                            <p>Banhos</p>
+                        </a>
+                    </li>
+                    <li id="sono">
+                        <a href="cadastrar_sono.php">
+                            <i class="material-icons">
+                                hotel
+                            </i>
+                            <p>Sono</p>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Relatórios</a>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="relatorioFralda.php">Fraldas</a>
+                          <a class="dropdown-item" href="relatorioBanho.php">Banhos</a>
+                          <a class="dropdown-item" href="relatorioPesoAltura.php">Peso e Altura</a>
+                          <a class="dropdown-item" href="relatorioConsultas.php">Consultas</a>
+                      </div>
+                  </li>
+                <!--<li id="album">
                     <a href="relatórios.php">
                         <i class="material-icons">
                             bar_chart
                         </i>
                         <p>Relatórios</p>
                     </a>
-                </li>
+                </li>-->
                 <li class="active-pro" style="padding-bottom: 50px;">
 
                     <a href="./index.php">
