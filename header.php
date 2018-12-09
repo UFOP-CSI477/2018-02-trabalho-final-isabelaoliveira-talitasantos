@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!doctype html>
 <html lang="pt-BR">
 
@@ -31,12 +32,12 @@
         </div>
         <div class="sidebar-wrapper">
             <ul class="nav">
-                <!--<li id="dashboard">
+                <li id="dashboard">
                     <a href="./admin.php">
                         <i class="material-icons">dashboard</i>
                         <p>Página Inicial</p>
                     </a>
-                </li>-->
+                </li>
                 <li id="dados">
                     <a href="cadastrar_dados.php">
                         <i class="material-icons">

@@ -6,12 +6,28 @@ require_once 'assets/php/classes/classPesoAltura.php';
 $bebe = new Bebes();
 $info = new PesoAltura();
 
-if(isset($_POST['insert'])){
+if (isset($_POST['insert'])) {
     $bebe->setNome($_POST['nome']);
     $bebe->setDataNascimento($_POST['data_nascimento']);
     $bebe->setCidade($_POST['cidade']);
-    $bebe->setFoto($_POST['foto']);
     $bebe->setUsuario($_POST['usuarios_master_id']);
+
+    $foto = $_FILES["foto"];
+    // Se a foto estiver sido selecionada
+    if (!empty($foto["name"])) {
+        // Pega extensão da imagem
+        preg_match("/\.(png|jpg|jpeg){1}$/i", $foto["name"], $ext);
+        // Gera um nome único para a imagem
+        $nome_imagem = md5(uniqid(time())) . "." . $ext[1];
+        $diretorio = "assets/img/";
+        if (!file_exists($diretorio)){
+            mkdir($diretorio, 0777, true);
+        }
+        // Caminho de onde ficará a imagem
+        $caminho_imagem = $diretorio . $nome_imagem;
+        move_uploaded_file($foto["tmp_name"], $caminho_imagem);
+        $bebe->setFoto($caminho_imagem);
+    }
 
     $id_bebe = $bebe->insert();
     if($id_bebe > 0){
@@ -38,7 +54,7 @@ if(isset($_POST['insert'])){
                     <?php echo $result; ?>
                 </div>
                 <?php
-            }else if(isset($error)){
+            } else if (isset($error)) {
                 ?>
                 <div class="alert alert-danger">
                     <?php echo $error; ?>
@@ -53,13 +69,12 @@ if(isset($_POST['insert'])){
                         <p class="category">Cadastre os dados básicos do bebê</p>
                     </div>
                     <div class="card-content">
-                        <form action="" method="post">
+                        <form action="cadastrar_dados.php" method="post" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group label-floating">
                                         <label class="control-label">Nome</label>
                                         <input type="text" name="nome" class="form-control">
-                                    
                                     </div>
                                 </div>
                             </div>
@@ -81,27 +96,28 @@ if(isset($_POST['insert'])){
                             </div>
 
                             <div class="col-md-5">
-                                    <div class="form-group label-floating">
-                                        <label class="control-label">Peso</label>
-                                        <input type="text" id="peso" name="peso" class="form-control">
-                                    </div>
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Peso</label>
+                                    <input type="text" id="peso" name="peso" class="form-control">
                                 </div>
+                            </div>
 
 
                             <div class="col-md-5">
-                                    <div class="form-group label-floating">
-                                        <label class="control-label">Altura</label>
-                                        <input type="text" id="altura" name="altura" class="form-control">
-                                    </div>
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Altura</label>
+                                    <input type="text" id="altura" name="altura" class="form-control">
+                                </div>
                             </div>
-
-                             <div class="col-md-5">
-                                    <div class="form-group label-floating">
-                                        <label class="control-label">Foto</label>
-                                        <input type="text" name="foto" class="form-control">
-                                    </div>
+                            <div class="col-md-5">
+                                <div>
+                                    <span class="btn btn-raised btn-round btn-default btn-file">
+                                        <span class="fileinput-new">Inserir foto</span>
+                                    <input type="file" name="foto"/></span>
+                                </div>
                             </div>
-                            <input type="hidden" name="usuarios_master_id" value="1" class="form-control">
+                            <input type="hidden" name="usuarios_master_id" value="<?php echo $_SESSION['id'] ?>"
+                                   class="form-control">
                             <button type="submit" name="insert" id="btnamarelo" class="btn btn-primary pull-right">
                                 Cadastrar
                             </button>
@@ -114,8 +130,6 @@ if(isset($_POST['insert'])){
         </div>
     </div>
 </div>
-<script src="assets/js/funcoes.js"></script>
-<script src="assets/js/mask/src/jquery.mask.js"></script>
 <?php
 require_once 'footer.php';
 ?>

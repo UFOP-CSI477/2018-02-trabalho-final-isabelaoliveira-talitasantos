@@ -1,3 +1,32 @@
+<?php
+session_start();
+ob_start();
+require_once 'assets/php/classes/classUsuarioMaster.php';
+$user = new Usuarios_master();
+
+if(isset($_POST['login'])){
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+
+    $usuario = $user->setEmail($email);
+    $usuario = $user->locate();
+
+    if(is_null($usuario) || empty($usuario)){
+        $error = "E-mail inválido";
+    }else{
+        if(sha1($senha) == $usuario->senha){
+            if(!isset($_SESSION)){
+                session_start();
+            }
+            $_SESSION['email'] = $usuario->email;
+            $_SESSION['id'] = $usuario->id;
+            header("Location: admin.php");
+        }else{
+            $error = "Senha inválida";
+        }
+    }
+}
+?>
 <!doctype html>
 <html lang="pt-BR">
 
@@ -41,7 +70,7 @@
             <?php
         }
         ?>
-        <form class="form-signin" action="assets/php/validaLogin.php" method="post">
+        <form class="form-signin" action="index.php" method="post">
 
             <span id="reauth-email" class="reauth-email"></span>
 
@@ -50,7 +79,7 @@
             <input type="password" class="form-control" name="senha" placeholder="Senha" required>
 
 
-            <button class="btn btn-lg btn-primary btn-block btn-signin" id="btnentrar" type="submit" name="insert">
+            <button class="btn btn-lg btn-primary btn-block btn-signin" id="btnentrar" type="submit" name="login">
                 Entrar
             </button>
             <a href="cadastrarMaster.php">Cadastrar Usuário</a>

@@ -85,6 +85,13 @@ class PesoAltura{
         return $stmt;
     }
 
+    public function dados_bebe($bebe_id){
+        $stmt = $this->conn->prepare("SELECT * FROM `pesoaltura` WHERE `bebe_id` = :bebe_id ORDER BY `id` DESC LIMIT 1");
+        $stmt->bindParam(":bebe_id", $bebe_id);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_OBJ);
+        return $row;
+    }
 
 }
 ?>

@@ -99,6 +99,12 @@ class Bebes{
         return $stmt;
     }
 
+    public function pesquisa($usuarios_master_id){
+        $stmt = $this->conn->prepare("SELECT * FROM `bebe` WHERE `usuarios_master_id` = :usuarios_master_id");
+        $stmt->bindParam(":usuarios_master_id", $usuarios_master_id);
+        $stmt->execute();
+        return $stmt;
+    }
 
 }
 ?>

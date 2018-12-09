@@ -78,6 +78,25 @@ class Usuarios_master{
         return $stmt;
     }
 
+    public function indexEmail($email){
+        try{
+            $stmt = $this->conn->prepare("SELECT * FROM `usuarios_master` WHERE `email` = :email");
+            $stmt->bindParam(":email", $email);
+            $stmt->execute();
+            $row = $stmt->fetch(PDO::FETCH_OBJ);
+            return $row;
+        }catch(PDOException $e){
+            return $e;
+        }
+    }
+    public function locate(){
+        $stmt = $this->conn->prepare("SELECT * FROM `usuarios_master` WHERE `email` = :email");
+        $stmt->bindParam(":email", $this->email);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_OBJ);
+        return $row;
+    }
+
 
 }
 ?>
