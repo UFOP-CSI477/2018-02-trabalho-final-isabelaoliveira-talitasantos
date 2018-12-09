@@ -60,13 +60,14 @@ class Bebes{
     public function edit(){
         try{
             $stmt = $this->conn->prepare("UPDATE `bebe` SET `nome` = :nome, `data_nascimento` = :data_nascimento, `cidade` = :cidade, `foto` = :foto, `usuarios_master_id` = :usuarios_master_id WHERE `id` = :id");
+            $stmt->bindParam(":id", $this->id);
             $stmt->bindParam(":nome", $this->nome);
             $stmt->bindParam(":data_nascimento", $this->data_nascimento);
             $stmt->bindParam(":cidade", $this->cidade);
             $stmt->bindParam(":foto", $this->foto);
             $stmt->bindParam(":usuarios_master_id", $this->usuarios_master_id);
             $stmt->execute();
-            return 1;
+            return $this->id;
         }catch(PDOException $e){
             echo $e->getMessage();
             return 0;

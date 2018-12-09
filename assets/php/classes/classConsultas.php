@@ -34,7 +34,7 @@ class Consultas{
     }
 
     function setObservacao($value){
-        $this->medico = $value;
+        $this->observacao = $value;
     }
 
     function setBebeId($value){

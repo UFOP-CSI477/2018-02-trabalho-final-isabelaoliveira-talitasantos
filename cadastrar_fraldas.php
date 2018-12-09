@@ -6,6 +6,8 @@ require_once 'assets/php/classes/classFraldas.php';
 $bebe = new Bebes();
 $fralda = new Fraldas();
 
+$pessoa = $bebe->pesquisa($_SESSION['id']);
+
 if(isset($_POST['insert'])){
     $fralda->setBebe($_POST['bebe_id']);
     $fralda->setData($_POST['data']);
@@ -48,15 +50,12 @@ if(isset($_POST['insert'])){
                                 <div class="col-md-6">
                                     <div class="form-group label-floating">
                                         <label class="control-label">Criança</label>
-                                        <select id="select" name="bebe_id" id="bebe_id" for="bebe"
-                                                class="form-control" required>
-                                            <?php
-                                            $stmt = $bebe->index();
-                                            while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
-                                                ?>
-                                                <option id="bebe_id" value="<?php echo $row->id ?>" selected><?php echo $row->nome ?></option>
-                                            <?php } ?>
-                                        </select>
+                                        <?php while ($row = $pessoa->fetch(PDO::FETCH_OBJ)) { ?>
+                                            <input type="hidden" name="bebe_id"
+                                                   value="<?php echo $row->id ?>">
+                                            <input type="text" class="form-control"
+                                                   value="<?php echo $row->nome ?>" readonly>
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>

@@ -24,28 +24,28 @@ $pessoa = $bebe->pesquisa($_SESSION['id']);
                                     <div class="form-group label-floating">
                                         <label class="control-label">Nome: </label>
                                         <input type="text" name="nome" value="<?php echo $row->nome ?>"
-                                               class="form-control">
+                                               class="form-control" readonly>
                                     </div>
                                     <div class="form-group label-floating">
                                         <label class="control-label">Data de Nascimento: </label>
                                         <input type="text" name="nome"
                                                value="<?php echo date('d/m/Y', strtotime($row->data_nascimento)); ?>"
-                                               class="form-control">
+                                               class="form-control" readonly>
                                     </div>
                                     <div class="form-group label-floating">
                                         <label class="control-label">Cidade: </label>
                                         <input type="text" name="nome" value="<?php echo $row->cidade ?>"
-                                               class="form-control">
+                                               class="form-control" readonly>
                                     </div>
                                     <div class="form-group label-floating">
                                         <label class="control-label">Altura: </label>
                                         <input type="text" name="nome" value="<?php echo $stmt->peso ?> cm"
-                                               class="form-control">
+                                               class="form-control" readonly>
                                     </div>
                                     <div class="form-group label-floating">
                                         <label class="control-label">Peso: </label>
                                         <input type="text" name="nome" value="<?php echo $stmt->altura ?> gramas"
-                                               class="form-control">
+                                               class="form-control" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-6">

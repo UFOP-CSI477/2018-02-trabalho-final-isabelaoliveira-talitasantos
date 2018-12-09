@@ -6,14 +6,16 @@ require_once 'assets/php/classes/classBanhos.php';
 $bebe = new Bebes();
 $banho = new Banhos();
 
-if(isset($_POST['insert'])){
+$pessoa = $bebe->pesquisa($_SESSION['id']);
+
+if (isset($_POST['insert'])) {
     $banho->setBebe($_POST['bebe_id']);
     $banho->setData($_POST['data']);
     $banho->setHorario($_POST['horario']);
 
-    if($banho->insert() == 1){
+    if ($banho->insert() == 1) {
         $result = "Banho inserido com sucesso!";
-    }else{
+    } else {
         $error = "Erro ao inserir. Tente novamente";
     }
 }
@@ -28,7 +30,7 @@ if(isset($_POST['insert'])){
                     <?php echo $result; ?>
                 </div>
                 <?php
-            }else if(isset($error)){
+            } else if (isset($error)) {
                 ?>
                 <div class="alert alert-danger">
                     <?php echo $error; ?>
@@ -36,10 +38,6 @@ if(isset($_POST['insert'])){
                 <?php
             }
             ?>
-   
-<div class="content">
-    <div class="container-fluid">
-        <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header" data-background-color="orange">
@@ -52,15 +50,12 @@ if(isset($_POST['insert'])){
                                 <div class="col-md-6">
                                     <div class="form-group label-floating">
                                         <label class="control-label">Criança</label>
-                                        <select id="select" name="bebe_id" id="bebe_id" for="bebe"
-                                                class="form-control" required>
-                                            <?php
-                                            $stmt = $bebe->index();
-                                            while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
-                                                ?>
-                                                <option id="bebe_id" value="<?php echo $row->id ?>" selected><?php echo $row->nome ?></option>
-                                            <?php } ?>
-                                        </select>
+                                        <?php while ($row = $pessoa->fetch(PDO::FETCH_OBJ)) { ?>
+                                            <input type="hidden" name="bebe_id"
+                                                   value="<?php echo $row->id ?>">
+                                            <input type="text" class="form-control"
+                                                   value="<?php echo $row->nome ?>" readonly>
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>
