@@ -24,12 +24,12 @@
 
 <body>
 <div class="wrapper">
-    <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-1.jpg">
-        <div class="logo">
-            <a href="./admin.php" class="simple-text">
-                <img class="logo1" src="assets/img/logo5.jpg">
-            </a>
-        </div>
+    <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-1.jpg" align="center">
+
+        <a href="./admin.php" class="simple-text">
+            <img class="logo1" src="assets/img/logo5.jpg">
+        </a>
+
         <div class="sidebar-wrapper">
             <ul class="nav">
                 <li id="dashboard">
@@ -40,9 +40,7 @@
                 </li>
                 <li id="dados">
                     <a href="cadastrar_dados.php">
-                        <i class="material-icons">
-                            perm_identity
-                        </i>
+                        <i class="material-icons">perm_identity</i>
                         <p>Dados</p>
                     </a>
                 </li>
@@ -84,6 +82,14 @@
                         <p>Sono</p>
                     </a>
                 </li>
+                <!--<li id="contas">
+                    <a href="">
+                        <i class="material-icons">
+                            contacts
+                        </i>
+                        <p>Contas</p>
+                    </a>
+                </li>-->
                 <li id="sono">
                     <a href="relatorios.php">
                         <i class="material-icons">
@@ -92,7 +98,7 @@
                         <p>Relatórios</p>
                     </a>
                 </li>
-                <li class="active-pro" style="padding-bottom: 50px;">
+                <li id="sair">
                     <a href="./index.php">
                         <i class="material-icons">exit_to_app</i>
                         <p>Sair</p>

@@ -56,6 +56,8 @@ $pessoa = $bebe->pesquisa($_SESSION['id']);
                                         </div>
                                     </div>
                                 </div>
+                                <p>Para adicionar um novo usuário para gerenciar as informações do bebê, clique no botão abaixo.</p>
+                                <a href="cadastrarUsuario.php" class="btn btn-primary pull-right">Adicionar usuário</a>
                             <?php } ?>
                         </div>
                     </div>
