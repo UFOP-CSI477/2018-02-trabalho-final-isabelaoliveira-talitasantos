@@ -50,7 +50,7 @@ class Bebes{
             $stmt->bindParam(":foto", $this->foto);
             $stmt->bindParam(":usuarios_master_id", $this->usuarios_master_id);
             $stmt->execute();
-            return 1;
+            return $this->conn->lastInsertId();
         }catch(PDOException $e){
             echo $e->getMessage();
             return 0;

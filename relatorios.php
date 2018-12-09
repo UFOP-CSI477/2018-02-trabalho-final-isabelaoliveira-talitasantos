@@ -13,7 +13,7 @@ require_once 'header.php';
                     <div class="card-content">
                         <ul class="nav nav-tabs justify-content-center">
                             <li class="nav-item">
-                                <a class="nav-link" href="relatorioFralda.php">Fraldas</a>
+                                <a class="nav-link" href="periodoFralda.php">Fraldas</a>
                             </li>
 
                             <li class="nav-item">

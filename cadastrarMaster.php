@@ -1,3 +1,22 @@
+<?php
+require_once 'assets/php/classes/classUsuarioMaster.php';
+$usuarioMaster = new Usuarios_master();
+
+if (isset($_POST['insert'])) {
+    if ($_POST['senha'] != $_POST['senha2']) {
+        $error = "As senhas não coincidem.";
+    } else {
+        $usuarioMaster->setEmail($_POST['email']);
+        $usuarioMaster->setSenha(sha1($_POST['senha']));
+
+        if ($usuarioMaster->insert() == 1) {
+            $html = "Usuário inserido com sucesso! Clique " . '<a href="index.php">aqui</a>' . " para acessar o sistema.";
+        } else {
+            $error = "Erro ao cadastrar novo usuário. Tente novamente";
+        }
+    }
+}
+?>
 <!doctype html>
 <html lang="pt-BR">
 
@@ -24,81 +43,76 @@
 <div class="wrapper">
     <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-1.jpg">
         <div class="logo">
-            <a href="./admin.php" class="simple-text">
+            <div class="simple-text">
                 <img class="logo1" src="assets/img/logo5.jpg">
-            </a>
+            </div>
         </div>
         <div class="sidebar-wrapper">
-            
+
         </div>
     </div>
     <div class="main-panel">
-
-<?php
-
-require_once 'assets/php/classes/classUsuarioMaster.php';
-
-$usuarioMaster = new Usuarios_master();
-
-if(isset($_POST['insert'])){
-    $usuarioMaster->setEmail($_POST['email']);
-    $usuarioMaster->setSenha($_POST['senha']);
-
-    if($usuarioMaster->insert() == 1){
-        $result = "Usuário inserido com sucesso!";
-    }else{
-        $error = "Erro ao inserir. Tente novamente";
-    }
-}
-?>
-<div class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <?php
-            if (isset($result)) {
-                ?>
-                <div class="alert alert-success">
-                    <?php echo $result; ?>
-                </div>
-                <?php
-            }else if(isset($error)){
-                ?>
-                <div class="alert alert-danger">
-                    <?php echo $error; ?>
-                </div>
-                <?php
-            }
-            ?>
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header" data-background-color="orange">
-                        <h4 class="title">Cadastrar</h4>
-                        <p class="category">Cadastre Usuário</p>
-                    </div>
-                    <div class="card-content">
-                        <form action="" method="post">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group label-floating">
-                                        <label class="control-label">Email</label>
-                                        <input type="text" name="email" class="form-control" required>
-                                    </div>
-                                    </div>
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <?php
+                    if (isset($result)) {
+                        ?>
+                        <div class="alert alert-success">
+                            <?php echo $result; ?>
+                        </div>
+                        <?php
+                    } else if (isset($error)) {
+                        ?>
+                        <div class="alert alert-danger">
+                            <?php echo $error; ?>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                    <?php if (isset($html)) { ?>
+                        <div><?php echo $html ?></div>
+                    <?php } ?>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header" data-background-color="orange">
+                                <h4 class="title">Cadastrar</h4>
+                                <p class="category">Cadastre Usuário</p>
+                            </div>
+                            <div class="card-content">
+                                <form action="" method="post">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">Email</label>
+                                                <input type="text" name="email" class="form-control" required>
+                                            </div>
+                                        </div>
                                     </div>
 
-                                <div class="col-md-5">
-                                    <div class="form-group label-floating">
-                                        <label class="control-label">Senha</label>
-                                        <input type="password" name="senha" class="form-control" required>
+                                    <div class="col-md-5">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Senha</label>
+                                            <input type="password" name="senha" class="form-control" required>
+                                        </div>
                                     </div>
-                                </div>
 
-                            <button type="submit" name="insert" id="btnamarelo" class="btn btn-primary pull-right">
-                                Cadastrar
-                            </button>
+                                    <div class="col-md-5">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Confirmar senha</label>
+                                            <input type="password" name="senha2" class="form-control" required>
+                                        </div>
+                                    </div>
 
-                            <div class="clearfix"></div>
-                        </form>
+                                    <button type="submit" name="insert" id="btnamarelo"
+                                            class="btn btn-primary pull-right">
+                                        Cadastrar
+                                    </button>
+
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
