@@ -5,9 +5,7 @@ require_once 'assets/php/classes/classFraldas.php';
 $fralda = new Fraldas();
 
 if (isset($_POST['search'])) {
-    //echo $_POST['bebe_id']." - ".$_POST['data_inicial']." - ".$_POST['data_final'];
     $resultado = $fralda->trocaDeFraldas($_POST['bebe_id'],$_POST['data_inicial'],$_POST['data_final']);
-    //var_dump($resultado);
 }
 ?>
 

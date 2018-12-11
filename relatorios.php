@@ -21,11 +21,11 @@ require_once 'header.php';
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="relatorioPesoAltura.php">Peso e Altura</a>
+                                <a class="nav-link" href="relatorioPesoAltura.php?id=<?php echo $_SESSION['id']; ?>">Peso e Altura</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="relatorioConsultas.php">TEM UM ERRO AQUI Consultas</a>
+                                <a class="nav-link" href="relatorioConsultas.php">Consultas</a>
                             </li>
                         </ul>
                     </div>

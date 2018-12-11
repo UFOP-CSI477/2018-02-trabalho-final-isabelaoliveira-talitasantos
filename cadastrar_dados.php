@@ -144,7 +144,7 @@ if (isset($_POST['edit'])) {
 
                             <div class="col-md-5">
                                 <div class="form-group label-floating">
-                                    <label class="control-label">Peso</label>
+                                    <label class="control-label">Peso (em gramas)</label>
                                     <input type="text" id="peso" name="peso" class="form-control">
                                 </div>
                             </div>
@@ -152,7 +152,7 @@ if (isset($_POST['edit'])) {
 
                             <div class="col-md-5">
                                 <div class="form-group label-floating">
-                                    <label class="control-label">Altura</label>
+                                    <label class="control-label">Altura (em cm)</label>
                                     <input type="text" id="altura" name="altura" class="form-control">
                                 </div>
                             </div>

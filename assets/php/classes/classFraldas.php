@@ -91,9 +91,7 @@ class Fraldas{
         $stmt->bindParam(":data_inicial", $data_inicial);
         $stmt->bindParam(":data_final", $data_final);
         $stmt->execute();
-        //$row = $stmt->fetch(PDO::FETCH_OBJ);
         return $stmt;
     }
-
 }
 ?>
