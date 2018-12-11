@@ -1,6 +1,6 @@
 <?php
 
-require_once "emailbase.php";
+require_once "database.php";
 
 class Usuarios_secundarios{
 
@@ -47,7 +47,8 @@ class Usuarios_secundarios{
 
     public function edit(){
         try{
-            $stmt = $this->conn->prepare("UPDATE `usuarios_secundarios` SET `email` = :email, `senha` = :senha `usuarios_master_id` = :usuarios_master_id WHERE `id` = :id");
+            $stmt = $this->conn->prepare("UPDATE `usuarios_secundarios` SET `email` = :email, `senha` = :senha, `usuarios_master_id` = :usuarios_master_id WHERE `id` = :id");
+            $stmt->bindParam(":id", $this->id);
             $stmt->bindParam(":email", $this->email);
             $stmt->bindParam(":senha", $this->senha);
             $stmt->bindParam(":usuarios_master_id", $this->usuarios_master_id);
@@ -85,6 +86,25 @@ class Usuarios_secundarios{
         return $stmt;
     }
 
+    public function indexEmail($email){
+        try{
+            $stmt = $this->conn->prepare("SELECT * FROM `usuarios_secundarios` WHERE `email` = :email");
+            $stmt->bindParam(":email", $email);
+            $stmt->execute();
+            $row = $stmt->fetch(PDO::FETCH_OBJ);
+            return $row;
+        }catch(PDOException $e){
+            return $e;
+        }
+    }
+
+    public function locate(){
+        $stmt = $this->conn->prepare("SELECT * FROM `usuarios_secundarios` WHERE `email` = :email");
+        $stmt->bindParam(":email", $this->email);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_OBJ);
+        return $row;
+    }
 
 }
 ?>

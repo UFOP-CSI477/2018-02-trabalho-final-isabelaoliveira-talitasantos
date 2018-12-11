@@ -32,18 +32,16 @@ if (isset($_POST['search'])) {
                                 </th>
                                 </thead>
                                 <tbody>
-                                <?php
-                               // while ($row = $resultado->fetch(PDO::FETCH_OBJ)) {
-                                    ?>
+                                <?php while($row = $resultado->fetch(PDO::FETCH_OBJ)) { ?>
                                     <tr>
                                         <td>
-                                            <?php echo $resultado; ?>
+                                            <?php echo date('d/m/Y', strtotime($row->dia)); ?>
                                         </td>
                                         <td>
-                                            <?php echo $resultado; ?>
+                                            <?php echo $row->quantidade; ?>
                                         </td>
                                     </tr>
-                                <?php// } ?>
+                                <?php } ?>
                                 </tbody>
                             </table>
                         </div>

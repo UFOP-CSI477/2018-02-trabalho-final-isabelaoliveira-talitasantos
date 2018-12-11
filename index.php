@@ -2,7 +2,10 @@
 session_start();
 ob_start();
 require_once 'assets/php/classes/classUsuarioMaster.php';
+require_once 'assets/php/classes/classUsuarioSecundarios.php';
+
 $user = new Usuarios_master();
+$user_secundario = new Usuarios_secundarios();
 
 if(isset($_POST['login'])){
     $email = $_POST['email'];
@@ -11,19 +14,33 @@ if(isset($_POST['login'])){
     $usuario = $user->setEmail($email);
     $usuario = $user->locate();
 
-    if(is_null($usuario) || empty($usuario)){
+    $usuario_secundario = $user_secundario->setEmail($email);
+    $usuario_secundario = $user_secundario->locate();
+
+    if((is_null($usuario) || empty($usuario)) && (is_null($usuario_secundario) || empty($usuario_secundario))){
         $error = "E-mail inválido";
     }else{
-        if(sha1($senha) == $usuario->senha){
+        if(sha1($senha) == $usuario->senha || sha1($senha) == $usuario_secundario->senha){
             if(!isset($_SESSION)){
                 session_start();
             }
-            $_SESSION['email'] = $usuario->email;
-            $_SESSION['id'] = $usuario->id;
+
+            if(sha1($senha) == $usuario->senha){
+                $_SESSION['email'] = $usuario->email;
+                $_SESSION['id'] = $usuario->id;
+            }else{
+                $_SESSION['email'] = $usuario_secundario->email;
+                $_SESSION['id'] = $usuario_secundario->id;
+            }
             header("Location: admin.php");
         }else{
             $error = "Senha inválida";
         }
+    }
+
+    // Testando se é o primeiro acesso do usuário secundário
+    if(sha1($senha) == sha1(123456)){
+        header("Location: primeiro_acesso.php?id=". $usuario_secundario->id ."&usuarios_master_id=".$usuario_secundario->usuarios_master_id);
     }
 }
 ?>

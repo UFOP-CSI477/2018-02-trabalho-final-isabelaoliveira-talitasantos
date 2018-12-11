@@ -86,13 +86,13 @@ class Fraldas{
     }
 
     public function trocaDeFraldas($bebe_id,$data_inicial,$data_final){
-        $stmt = $this->conn->prepare("SELECT count(id) as quantidade, data as dia FROM `fraldas` WHERE `bebe_id` = :bebe_id GROUP BY `data`");
-        $stmt->bindParam(":bebe_id", $this->bebe_id);
-        //$stmt->bindParam(":data_inicial", $this->data);
-        //$stmt->bindParam(":data_final", $this->data);
+        $stmt = $this->conn->prepare("SELECT count(id) as quantidade, data as dia FROM `fraldas` WHERE `bebe_id` = :bebe_id AND `data` BETWEEN :data_inicial AND :data_final GROUP BY `data`");
+        $stmt->bindParam(":bebe_id", $bebe_id);
+        $stmt->bindParam(":data_inicial", $data_inicial);
+        $stmt->bindParam(":data_final", $data_final);
         $stmt->execute();
-        $row = $stmt->fetch(PDO::FETCH_OBJ);
-        return $row;
+        //$row = $stmt->fetch(PDO::FETCH_OBJ);
+        return $stmt;
     }
 
 }

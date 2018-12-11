@@ -96,7 +96,5 @@ class Usuarios_master{
         $row = $stmt->fetch(PDO::FETCH_OBJ);
         return $row;
     }
-
-
 }
 ?>
