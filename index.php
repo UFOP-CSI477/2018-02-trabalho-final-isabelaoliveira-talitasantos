@@ -20,7 +20,7 @@ if(isset($_POST['login'])){
     if((is_null($usuario) || empty($usuario)) && (is_null($usuario_secundario) || empty($usuario_secundario))){
         $error = "E-mail inválido";
     }else{
-        if(sha1($senha) == $usuario->senha || sha1($senha) == $usuario_secundario->senha){
+        if($senha == $usuario->senha || sha1($senha) == $usuario_secundario->senha){
             if(!isset($_SESSION)){
                 session_start();
             }

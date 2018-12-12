@@ -17,15 +17,15 @@ require_once 'header.php';
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="relatorioBanho.php">Banhos</a>
+                                <a class="nav-link" href="periodoBanhos.php">Banhos</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="relatorioPesoAltura.php?id=<?php echo $_SESSION['id']; ?>">Peso e Altura</a>
+                                <a class="nav-link" href="relatorioPesoAltura.php" id="<?php echo $_SESSION['id']; ?>">Peso e Altura</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="relatorioConsultas.php">Consultas</a>
+                                <a class="nav-link" href="periodoConsultas.php">Consultas</a>
                             </li>
                         </ul>
                     </div>
