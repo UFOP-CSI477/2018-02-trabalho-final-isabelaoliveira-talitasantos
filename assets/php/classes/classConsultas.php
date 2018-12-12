@@ -120,6 +120,14 @@ class Consultas{
         return $arrayProdutos;
     }
 
+    public function consultasRealizadas($bebe_id,$data_inicial,$data_final){
+        $stmt = $this->conn->prepare("SELECT count(id) as quantidade, data as dia, medico, local, observacao FROM `consultas` WHERE `bebe_id` = :bebe_id AND `data` BETWEEN :data_inicial AND :data_final GROUP BY `data`");
+        $stmt->bindParam(":bebe_id", $bebe_id);
+        $stmt->bindParam(":data_inicial", $data_inicial);
+        $stmt->bindParam(":data_final", $data_final);
+        $stmt->execute();
+        return $stmt;
+    }
 
 }
 ?>
