@@ -3,9 +3,9 @@
 class Database
 {
     private $host = "127.0.0.1";
-    private $db_name = "db";
-    private $username = "root";
-    private $password = "";
+    private $db_name = "babyLife";
+    private $username = "sistemaweb";
+    private $password = "123456";
     public $conn;
 
 

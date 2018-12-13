@@ -7,31 +7,29 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
--- -----------------------------------------------------
--- Schema db
--- -----------------------------------------------------
+CREATE DATABASE IF NOT EXISTS `babyLife` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `babyLife`;
+
+ DROP USER `sistemaweb`@`localhost`; 
+ CREATE USER `sistemaweb`@`localhost` identified by "123456"; 
+GRANT ALL PRIVILEGES ON babyLife.* TO `sistemaweb`@`localhost`;
+FLUSH PRIVILEGES;
 
 -- -----------------------------------------------------
--- Schema db
+-- Table `babyLife`.`usuarios_master`
 -- -----------------------------------------------------
-CREATE DATABASE IF NOT EXISTS `db` DEFAULT CHARACTER SET utf8 ;
-USE `db` ;
-
--- -----------------------------------------------------
--- Table `db`.`usuarios_master`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `db`.`usuarios_master` (
+CREATE TABLE IF NOT EXISTS `babyLife`.`usuarios_master` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(45) NOT NULL,
   `senha` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
-ENGINE = InnoDB;
+ENGINE = Innodb;
 
 
 -- -----------------------------------------------------
--- Table `db`.`bebe`
+-- Table `babyLife`.`bebe`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `db`.`bebe` (
+CREATE TABLE IF NOT EXISTS `babyLife`.`bebe` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `data_nascimento` DATE NOT NULL,
@@ -41,16 +39,16 @@ CREATE TABLE IF NOT EXISTS `db`.`bebe` (
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_bebe_usuarios_master1`
     FOREIGN KEY (`usuarios_master_id`)
-    REFERENCES `db`.`usuarios_master` (`id`)
+    REFERENCES `babyLife`.`usuarios_master` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+ENGINE = Innodb;
 
 
 -- -----------------------------------------------------
--- Table `db`.`consultas`
+-- Table `babyLife`.`consultas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `db`.`consultas` (
+CREATE TABLE IF NOT EXISTS `babyLife`.`consultas` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `data` DATE NOT NULL,
   `local` VARCHAR(45) NOT NULL,
@@ -60,16 +58,16 @@ CREATE TABLE IF NOT EXISTS `db`.`consultas` (
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_consultas_bebe1`
     FOREIGN KEY (`bebe_id`)
-    REFERENCES `db`.`bebe` (`id`)
+    REFERENCES `babyLife`.`bebe` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+ENGINE = Innodb;
 
 
 -- -----------------------------------------------------
--- Table `db`.`pesoAltura`
+-- Table `babyLife`.`pesoAltura`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `db`.`pesoAltura` (
+CREATE TABLE IF NOT EXISTS `babyLife`.`pesoAltura` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `peso` VARCHAR(7) NOT NULL,
   `altura` VARCHAR(7) NOT NULL,
@@ -77,16 +75,16 @@ CREATE TABLE IF NOT EXISTS `db`.`pesoAltura` (
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_pesoAltura_bebe1`
     FOREIGN KEY (`bebe_id`)
-    REFERENCES `db`.`bebe` (`id`)
+    REFERENCES `babyLife`.`bebe` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+ENGINE = Innodb;
 
 
 -- -----------------------------------------------------
--- Table `db`.`banhos`
+-- Table `babyLife`.`banhos`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `db`.`banhos` (
+CREATE TABLE IF NOT EXISTS `babyLife`.`banhos` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `data` DATE NOT NULL,
   `horario` VARCHAR(45) NOT NULL,
@@ -94,16 +92,16 @@ CREATE TABLE IF NOT EXISTS `db`.`banhos` (
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_banhos_bebe1`
     FOREIGN KEY (`bebe_id`)
-    REFERENCES `db`.`bebe` (`id`)
+    REFERENCES `babyLife`.`bebe` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+ENGINE = Innodb;
 
 
 -- -----------------------------------------------------
--- Table `db`.`alimentacoes`
+-- Table `babyLife`.`alimentacoes`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `db`.`alimentacoes` (
+CREATE TABLE IF NOT EXISTS `babyLife`.`alimentacoes` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `tipo` VARCHAR(45) NOT NULL,
   `data` DATE NOT NULL,
@@ -113,16 +111,16 @@ CREATE TABLE IF NOT EXISTS `db`.`alimentacoes` (
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_alimentacoes_bebe1`
     FOREIGN KEY (`bebe_id`)
-    REFERENCES `db`.`bebe` (`id`)
+    REFERENCES `babyLife`.`bebe` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+ENGINE = Innodb;
 
 
 -- -----------------------------------------------------
--- Table `db`.`fraldas`
+-- Table `babyLife`.`fraldas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `db`.`fraldas` (
+CREATE TABLE IF NOT EXISTS `babyLife`.`fraldas` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `data` DATE NOT NULL,
   `horario` VARCHAR(45) NOT NULL,
@@ -130,16 +128,16 @@ CREATE TABLE IF NOT EXISTS `db`.`fraldas` (
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_fraldas_bebe1`
     FOREIGN KEY (`bebe_id`)
-    REFERENCES `db`.`bebe` (`id`)
+    REFERENCES `babyLife`.`bebe` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+ENGINE = Innodb;
 
 
 -- -----------------------------------------------------
--- Table `db`.`sonos`
+-- Table `babyLife`.`sonos`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `db`.`sonos` (
+CREATE TABLE IF NOT EXISTS `babyLife`.`sonos` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `data` DATE NOT NULL,
   `horario_inicio` VARCHAR(45) NOT NULL,
@@ -149,16 +147,16 @@ CREATE TABLE IF NOT EXISTS `db`.`sonos` (
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_sonos_bebe1`
     FOREIGN KEY (`bebe_id`)
-    REFERENCES `db`.`bebe` (`id`)
+    REFERENCES `babyLife`.`bebe` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+ENGINE = Innodb;
 
 
 -- -----------------------------------------------------
--- Table `db`.`usuarios_secundarios`
+-- Table `babyLife`.`usuarios_secundarios`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `db`.`usuarios_secundarios` (
+CREATE TABLE IF NOT EXISTS `babyLife`.`usuarios_secundarios` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(45) NOT NULL,
   `senha` VARCHAR(45) NOT NULL,
@@ -166,10 +164,10 @@ CREATE TABLE IF NOT EXISTS `db`.`usuarios_secundarios` (
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_usuarios_secundarios_usuarios_master`
     FOREIGN KEY (`usuarios_master_id`)
-    REFERENCES `db`.`usuarios_master` (`id`)
+    REFERENCES `babyLife`.`usuarios_master` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+ENGINE = Innodb;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

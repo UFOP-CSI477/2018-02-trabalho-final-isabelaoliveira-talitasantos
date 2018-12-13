@@ -107,5 +107,13 @@ class Bebes{
         return $stmt;
     }
 
+    public function pesquisaBebe($usuarios_master_id){
+        $stmt = $this->conn->prepare("SELECT * FROM `bebe` WHERE `usuarios_master_id` = :usuarios_master_id");
+        $stmt->bindParam(":usuarios_master_id", $usuarios_master_id);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_OBJ);
+        return $row;
+    }
+
 }
 ?>

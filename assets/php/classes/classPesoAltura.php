@@ -94,7 +94,7 @@ class PesoAltura{
     }
 
     public function historico($id){
-        $stmt = $this->conn->prepare("SELECT * FROM `pesoaltura`, `bebe` WHERE `bebe`.`id` = :id ORDER BY `pesoaltura`.`id`");
+        $stmt = $this->conn->prepare("SELECT * FROM `pesoaltura`, `bebe` WHERE `bebe`.`id` = :id ORDER BY `pesoaltura`.`id` DESC");
         $stmt->bindParam(":id", $id);
         $stmt->execute();
         return $stmt;

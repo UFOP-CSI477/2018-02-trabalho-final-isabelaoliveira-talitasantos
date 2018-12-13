@@ -6,7 +6,7 @@ require_once 'assets/php/classes/classPesoAltura.php';
 $bebe = new Bebes();
 $info = new PesoAltura();
 
-$pessoa = $bebe->pesquisa($_SESSION['id']);
+$pessoa = $bebe->pesquisaBebe($_SESSION['id']);
 
 if (isset($_POST['insert'])) {
     $bebe->setNome($_POST['nome']);
@@ -65,6 +65,7 @@ if (isset($_POST['edit'])) {
         $bebe->setCidade($_POST['cidade']);
         $bebe->setUsuario($_POST['usuarios_master_id']);
         $bebe->setFoto($caminho_arquivo);
+        var_dump($bebe);
     } else {
         $bebe->setId($_POST['id']);
         $bebe->setNome($_POST['nome']);
@@ -110,7 +111,9 @@ if (isset($_POST['edit'])) {
             ?>
             <div class="col-md-12">
                 <div class="card">
-                    <?php if (empty($pessoa)) { ?>
+                    <?php
+                    if ($pessoa == null) {
+                    ?>
                     <div class="card-header" data-background-color="orange">
                         <h4 class="title">Cadastrar</h4>
                         <p class="category">Cadastre os dados básicos do bebê</p>
@@ -172,8 +175,7 @@ if (isset($_POST['edit'])) {
                             <div class="clearfix"></div>
                         </form>
                         <?php } else {
-                        while ($row = $pessoa->fetch(PDO::FETCH_OBJ)) {
-                        $stmt = $info->dados_bebe($row->id);
+                        $stmt = $info->dados_bebe($pessoa->id);
                         ?>
                         <div class="card-header" data-background-color="orange">
                             <h4 class="title">Editar</h4>
@@ -184,18 +186,19 @@ if (isset($_POST['edit'])) {
                                 <div class="col-md-6">
                                     <div class="form-group label-floating">
                                         <label class="control-label">Nome: </label>
-                                        <input type="text" name="nome" value="<?php echo $row->nome ?>"
+                                        <input type="text" name="nome" value="<?php echo $pessoa->nome ?>"
                                                class="form-control" readonly>
                                     </div>
                                     <div class="form-group label-floating">
                                         <label class="control-label">Data de Nascimento: </label>
-                                        <input type="text" name="data_nascimento"
-                                               value="<?php echo date('d/m/Y', strtotime($row->data_nascimento)); ?>"
+                                        <input type="hidden" name="data_nascimento" value="<?php echo $pessoa->data_nascimento ?>">
+                                        <input type="text"
+                                               value="<?php echo date('d/m/Y', strtotime($pessoa->data_nascimento)); ?>"
                                                class="form-control" readonly>
                                     </div>
                                     <div class="form-group label-floating">
                                         <label class="control-label">Cidade: </label>
-                                        <input type="text" name="cidade" value="<?php echo $row->cidade ?>"
+                                        <input type="text" name="cidade" value="<?php echo $pessoa->cidade ?>"
                                                class="form-control" readonly>
                                     </div>
                                     <div class="form-group label-floating">
@@ -213,8 +216,8 @@ if (isset($_POST['edit'])) {
                                     <div class="col-md-4">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Foto: </label>
-                                            <input type="hidden" name="foto_old" value="<?php echo $row->foto ?>">
-                                            <img src="<?php echo $row->foto ?>" class="img-responsive">
+                                            <input type="hidden" name="foto_old" value="<?php echo $pessoa->foto ?>">
+                                            <img src="<?php echo $pessoa->foto ?>" class="img-responsive">
                                         </div>
                                     </div>
                                     <div>
@@ -223,7 +226,7 @@ if (isset($_POST['edit'])) {
                                             <input type="file" name="foto"/></span>
                                     </div>
                                 </div>
-                                <input type="hidden" name="id" value="<?php echo $row->id ?>">
+                                <input type="hidden" name="id" value="<?php echo $pessoa->id ?>">
                                 <input type="hidden" name="id_pesoAltura" value="<?php echo $stmt->id ?>">
                                 <input type="hidden" name="usuarios_master_id"
                                        value="<?php echo $_SESSION['id'] ?>">
@@ -234,7 +237,7 @@ if (isset($_POST['edit'])) {
 
                                 <div class="clearfix"></div>
                             </form>
-                            <?php }
+                            <?php
                             } ?>
                         </div>
                     </div>

@@ -28,7 +28,7 @@ $pessoa = $bebe->pesquisa($_SESSION['id']);
                                     </div>
                                     <div class="form-group label-floating">
                                         <label class="control-label">Data de Nascimento: </label>
-                                        <input type="text" name="nome"
+                                        <input type="text" name="data_nascimento"
                                                value="<?php echo date('d/m/Y', strtotime($row->data_nascimento)); ?>"
                                                class="form-control" readonly>
                                     </div>
@@ -39,12 +39,12 @@ $pessoa = $bebe->pesquisa($_SESSION['id']);
                                     </div>
                                     <div class="form-group label-floating">
                                         <label class="control-label">Altura: </label>
-                                        <input type="text" name="nome" value="<?php echo $stmt->peso ?> cm"
+                                        <input type="text" name="nome" value="<?php echo $stmt->altura ?> cm"
                                                class="form-control" readonly>
                                     </div>
                                     <div class="form-group label-floating">
                                         <label class="control-label">Peso: </label>
-                                        <input type="text" name="nome" value="<?php echo $stmt->altura ?> gramas"
+                                        <input type="text" name="nome" value="<?php echo $stmt->peso ?> gramas"
                                                class="form-control" readonly>
                                     </div>
                                 </div>
